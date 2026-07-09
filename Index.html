@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<Html>
+<head>
+<style>
+/* <-- WRITE THE URL CODE HERE */
+.puzzle-div {
+  width: 100%;
+  min-height: 200px;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  
+  /* 1. Pattern + Gradient together */
+  background-image: 
+    url('https://www.transparenttextures.com/patterns/cardboard.png'),
+    linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  background-size: auto, cover;
+  color: #fff;
+}
+
+/* Make text attractive inside puzzle-div */
+.puzzle-div b {
+  font-size: 36px; 
+  color: #fff; 
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  letter-spacing: 1px;
+  display: block;
+  margin: 5px 0;
+}
+
+.puzzle-div p {
+  font-size: 18px;
+  color: #ffe082;
+  font-style: italic;
+  margin: 8px 0;
+}
+</style>
+</head>
+<body>
+  <div class="puzzle-div"><b>Welcome</b><br><b>HTML With Bhishma<b>created by Bhishma Hembram<p>Click here 👇🏻</p></div>
+<div style="background:#f0f0f0; padding:20px; text-align:center;">
+
+  <button onclick="showfirst()" style="background:green; color:white; font-size:16px; padding:12px 25px; border:none; border-radius:50px; box-shadow:0 4px 10px rgba(0,0,0,0.2); margin:8px; cursor:pointer;">Introduction</button>
+
+  <button onclick="showsecound()" style="background:blue; color:white; font-size:16px; padding:12px 25px; border:none; border-radius:50px; box-shadow:0 4px 10px rgba(0,0,0,0.2); margin:8px; cursor:pointer;">Basic Tag</button>
+
+  <button onclick="showthird()" style="background:red; color:white; font-size:16px; padding:12px 25px; border:none; border-radius:50px; box-shadow:0 4px 10px rgba(0,0,0,0.2); margin:8px; cursor:pointer;">Advance Tag</button>
+
+  <button onclick="showfourth()" style="background:yellow; color:white; font-size:16px; padding:12px 25px; border:none; border-radius:50px; box-shadow:0 4px 10px rgba(0,0,0,0.2); margin:8px; cursor:pointer;">Practice</button>
+
+</div>
+<div id="output" style="margin-top:20px; font-size:18px; color:gray;"></div>
+<script>
+function showfourth(){ 
+  document.getElementById("output").innerHTML = `
+<h2>💪 Practice Zone - 45 Questions</h2>
+
+<div style="background:#1e1e1e; color:#4fc3f7; padding:20px; border-radius:10px; font-family: 'Courier New', monospace; font-size:15px; border-left:5px solid red; margin-bottom:20px;">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;My Page&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;&lt;h1&gt;Hello World&lt;/h1&gt;&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+
+<h3 style="color:#d81b60;">📘 SECTION A: 35 Basic Tag Questions</h3>
+<div id="basic-questions"></div>
+
+<h3 style="color:#d81b60; margin-top:30px;">🚀 SECTION B: 10 Advanced Tag Questions</h3>
+<div id="advance-questions"></div>
+`;
+
+  const basicQ = [
+    "Display 'Hello World' as Heading", "Make 3 paragraphs about yourself", "Make a link to google.com in new tab",
+    "Insert image logo.png with alt='Logo'", "Create a button with text 'Submit'", "Make unordered list of 5 fruits",
+    "Make ordered list of your subjects", "Break line between Line1 and Line2", "Make word 'Important' bold",
+    "Make word 'Italic' in italics", "Create input box for name", "Create password input field",
+    "Add placeholder 'Enter email'", "Make horizontal line using <hr>", "Create div with red background",
+    "Write comment in HTML", "Make text center aligned", "Create link to send email",
+    "Add 2 line breaks between sentences", "Make title of page using <title>", "Insert favicon code",
+    "Create box with border using div", "Make 3 images in one row", "Link one HTML page to another",
+    "Create dropdown with 3 options", "Make checkbox for Agree to terms", "Create radio buttons for Gender",
+    "Add title attribute to link", "Make text underlined", "Create span inside paragraph",
+    "Add yellow background to paragraph", "Make font size 20px using style", "Create marquee text",
+    "Embed YouTube video using iframe", "Make copyright symbol © in footer"
+  ];
+
+  const advanceQ = [
+    "Layout with <header> <nav> <section> <footer>", "Embed audio player with controls",
+    "Create video player with poster image", "Make table with 3 rows and 3 columns",
+    "Embed Google Maps using iframe", "Create form with email validation",
+    "Make navigation bar with 4 links", "Use <article> for blog post",
+    "Semantic layout with <main> and <aside>", "Form with required fields and submit"
+  ];
+
+  function makeQuestion(q, num, color){
+    return `
+    <div style="background:white; padding:15px; margin:12px 0; border-radius:10px; border-left:5px solid ${color}; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+      <p style="font-size:17px;"><b style="color:red;">Q${num}.</b> ${q}</p>
+      
+      <label style="font-weight:bold;">Write Your Code Here:</label>
+      <textarea id="code${num}" rows="4" style="width:98%; margin-top:5px; font-family:'Courier New'; font-size:14px; padding:8px; border:2px solid #ccc; border-radius:6px;" placeholder="Type HTML code here..."></textarea>
+      
+      <button onclick="runCode(${num})" style="background:${color}; color:white; border:none; padding:8px 15px; border-radius:6px; margin-top:8px; cursor:pointer; font-weight:bold;">▶ Run Code</button>
+      
+      <div id="result${num}" style="background:#f1f1f1; padding:10px; margin-top:10px; border-radius:6px; min-height:50px; border:1px dashed #999;">
+        <b>Output will appear here</b>
+      </div>
+    </div>
+    `;
+  }
+
+  let basicHTML = "";
+  basicQ.forEach((q, i) => { basicHTML += makeQuestion(q, i+1, "#2196f3"); });
+
+  let advanceHTML = "";
+  advanceQ.forEach((q, i) => { advanceHTML += makeQuestion(q, i+36, "#e91e63"); });
+
+  document.getElementById("basic-questions").innerHTML = basicHTML;
+  document.getElementById("advance-questions").innerHTML = advanceHTML;
+  
+  let out = document.getElementById("output");
+  out.style.color = "red";
+  out.style.background = "#fce4ec";
+  out.style.padding = "25px";
+  out.style.borderRadius = "12px";
+  out.style.marginTop = "20px";
+}
+
+// This function runs the code students type
+function runCode(num){
+  let code = document.getElementById("code" + num).value;
+  document.getElementById("result" + num).innerHTML = code;
+}
+function showthird(){ // 3rd button = Advance Tags
+  document.getElementById("output").innerHTML = `
+<div style="background:#fce4ec; padding:20px; border-radius:12px; color:red;">
+
+  <h2 style="color:red;">🚀 10 Advanced HTML5 Tags 👇🏻</h2>
+  <p style="color:red; font-size:16px;">These tags make your website modern and professional:</p>
+
+  <h3 style="color:red;">1. &lt;header&gt; - Page Header</h3>
+  <p style="color:red;">Used for top section of website. Logo, menu comes here</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;header&gt;
+  &lt;h1&gt;My Website&lt;/h1&gt;
+&lt;/header&gt;</pre>
+
+  <h3 style="color:red;">2. &lt;nav&gt; - Navigation</h3>
+  <p style="color:red;">Used for menu links</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;nav&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;a href="#"&gt;About&lt;/a&gt;
+&lt;/nav&gt;</pre>
+
+  <h3 style="color:red;">3. &lt;section&gt; - Section</h3>
+  <p style="color:red;">Used to group related content</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;section&gt;
+  &lt;h2&gt;About Us&lt;/h2&gt;
+  &lt;p&gt;Company details here&lt;/p&gt;
+&lt;/section&gt;</pre>
+
+  <h3 style="color:red;">4. &lt;article&gt; - Article</h3>
+  <p style="color:red;">Used for blog post, news</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;article&gt;
+  &lt;h2&gt;Blog Title&lt;/h2&gt;
+  &lt;p&gt;Blog content here&lt;/p&gt;
+&lt;/article&gt;</pre>
+
+  <h3 style="color:red;">5. &lt;aside&gt; - Sidebar</h3>
+  <p style="color:red;">Used for ads, extra info</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;aside&gt;
+  &lt;h3&gt;Advertisement&lt;/h3&gt;
+  &lt;p&gt;Buy Now&lt;/p&gt;
+&lt;/aside&gt;</pre>
+
+  <h3 style="color:red;">6. &lt;footer&gt; - Footer</h3>
+  <p style="color:red;">Used for copyright, contact</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;footer&gt;
+  &lt;p&gt;© 2026 All Rights Reserved&lt;/p&gt;
+&lt;/footer&gt;</pre>
+
+  <h3 style="color:red;">7. &lt;audio&gt; - Audio Player</h3>
+  <p style="color:red;">Used to play sound</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;audio controls&gt;
+  &lt;source src="song.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</pre>
+
+  <h3 style="color:red;">8. &lt;video&gt; - Video Player</h3>
+  <p style="color:red;">Used to play video</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;video width="300" controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</pre>
+
+  <h3 style="color:red;">9. &lt;main&gt; - Main Content</h3>
+  <p style="color:red;">Used for main part of page</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;main&gt;
+  &lt;h1&gt;Welcome to my site&lt;/h1&gt;
+  &lt;p&gt;Main content here&lt;/p&gt;
+&lt;/main&gt;</pre>
+
+  <h3 style="color:red;">10. &lt;figure&gt; - Image with Caption</h3>
+  <p style="color:red;">Used for image + caption</p>
+  <pre style="background:#fff; color:#d81b60; padding:10px; border-radius:6px; border:1px solid red;">&lt;figure&gt;
+  &lt;img src="photo.jpg" width="200"&gt;
+  &lt;figcaption&gt;This is a beautiful photo&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+
+</div>
+`;
+
+  let out = document.getElementById("output");
+  out.style.background = "#fce4ec";
+  out.style.padding = "25px";
+  out.style.borderRadius = "12px";
+  out.style.marginTop = "20px";
+}
+function showfirst(){
+document.getElementById("output").innerHTML = `<section style="font-family: 'Segoe UI', Arial, sans-serif; line-height:1.9; max-width:900px; margin:50px auto; padding:45px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color:white; border-radius:20px; box-shadow:0 15px 40px rgba(0,0,0,0.25);">
+  
+  <h1 style="font-size:44px; margin-bottom:15px; text-align:center;">
+    What is HTML? 🌐
+  </h1>
+  
+  <p style="font-size:20px; text-align:center; opacity:0.9; margin-bottom:35px;">
+    The Building Block of Every Website You Visit
+  </p>
+
+  <hr style="border:none; height:3px; background:linear-gradient(90deg, transparent, white, transparent); margin:30px 0;">
+
+  <p style="font-size:18px;">
+    Imagine the internet as a huge city. <b>HTML is the foundation, the walls, and the rooms of every building in that city.</b>
+  </p>
+
+  <p style="font-size:18px;">
+    <b>HTML stands for HyperText Markup Language.</b> Don't let the big name scare you. It’s actually super simple. 
+    HTML is the standard language that tells your web browser how to <b>structure and display content</b> on a webpage.
+  </p>
+
+  <p style="font-size:18px;">
+    Without HTML, the web would just be plain, boring text. No headings, no images, no buttons, no links. 
+    HTML adds the <b>skeleton</b> to every website. Then CSS adds the style, and JavaScript adds the magic.
+  </p>
+
+  <div style="background:rgba(255,255,255,0.1); padding:25px; border-radius:15px; margin:30px 0;">
+    <h2 style="font-size:24px; margin-top:0;">How does HTML work? 🤔</h2>
+    <p style="font-size:17px; margin-bottom:0;">
+      HTML uses "tags" to label different parts of your page. Think of tags like boxes with names on them. 
+      <code style="background:rgba(0,0,0,0.3); padding:3px 8px; border-radius:5px;">&lt;h1&gt;</code> means "This is a big heading". 
+      <code style="background:rgba(0,0,0,0.3); padding:3px 8px; border-radius:5px;">&lt;p&gt;</code> means "This is a paragraph". 
+      <code style="background:rgba(0,0,0,0.3); padding:3px 8px; border-radius:5px;">&lt;img&gt;</code> means "Put an image here".
+    </p>
+  </div>
+
+  <p style="font-size:18px;">
+    Every single website you love — YouTube, Instagram, Google, Amazon — all of them started with HTML. 
+    It’s been around since 1991 and it’s still the #1 language of the web in 2026.
+  </p>
+
+  <p style="font-size:18px;">
+    The best part? <b>Anyone can learn HTML.</b> You don’t need to be a genius or have expensive software. 
+    Just a browser and a text editor. In a few hours, you can build your first webpage and show it to the world.
+  </p>
+
+  <p style="font-size:18px;">
+    So whether you want to become a web developer, designer, or just want to understand how websites work, 
+    <b>HTML is where your journey begins.</b> It’s the first step to turning your ideas into real websites.
+  </p>
+
+  <div style="text-align:center; margin-top:40px;">
+    <a href="#learn-more" style="padding:15px 35px; background:white; color:#2a5298; text-decoration:none; border-radius:50px; font-weight:bold; font-size:18px; box-shadow:0 6px 20px rgba(0,0,0,0.3); display:inline-block;">
+      Start Learning HTML →
+    </a>
+  </div>
+
+</section>`;
+}
+function showsecound(){
+  document.getElementById("output").innerHTML = `
+<h2>📚 10 Most Important Basic HTML Tags</h2>
+<p>Learn these 10 and you can make any basic website:</p>
+
+<h3>1. &lt;h1&gt; to &lt;h6&gt; - Headings</h3>
+<p>Used for titles. h1 is biggest, h6 is smallest</p>
+<code>&lt;h1&gt;Main Title&lt;/h1&gt;</code>
+
+<h3>2. &lt;p&gt; - Paragraph</h3>
+<p>Used for writing normal text and paragraphs</p>
+<code>&lt;p&gt;This is a paragraph&lt;/p&gt;</code>
+
+<h3>3. &lt;a&gt; - Anchor/Link</h3>
+<p>Used to link to other websites or pages</p>
+<code>&lt;a href="https://google.com"&gt;Go to Google&lt;/a&gt;</code>
+
+<h3>4. &lt;img&gt; - Image</h3>
+<p>Used to display images on website</p>
+<code>&lt;img src="photo.jpg" alt="Description"&gt;</code>
+
+<h3>5. &lt;div&gt; - Division/Container</h3>
+<p>Used to group elements together. Like a box</p>
+<code>&lt;div&gt;All content inside&lt;/div&gt;</code>
+
+<h3>6. &lt;button&gt; - Button</h3>
+<p>Used to make clickable buttons</p>
+<code>&lt;button&gt;Click Me&lt;/button&gt;</code>
+
+<h3>7. &lt;ul&gt; &lt;li&gt; - List</h3>
+<p>Used to make bullet point lists</p>
+<code>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;li&gt;Item 2&lt;/li&gt;&lt;/ul&gt;</code>
+
+<h3>8. &lt;br&gt; - Line Break</h3>
+<p>Used to break line. No closing tag needed</p>
+<code>Line 1 &lt;br&gt; Line 2</code>
+
+<h3>9. &lt;strong&gt; - Bold Text</h3>
+<p>Used to make text bold and important</p>
+<code>&lt;strong&gt;Important Text&lt;/strong&gt;</code>
+
+<h3>10. &lt;form&gt; &lt;input&gt; - Form</h3>
+<p>Used to take user input like name, email</p>
+<code>&lt;input type="text" placeholder="Enter name"&gt;</code>
+
+<p style="margin-top:20px; color:green;"><b>Pro Tip:</b> Practice these 10 tags daily and you'll master HTML basics in 1 week!</p>
+`;
+  
+  let out = document.getElementById("output");
+  out.style.color = "blue"; // PERMANENT BLUE TEXT
+  out.style.background = "#e6f0ff"; // light blue background
+  out.style.padding = "25px";
+  out.style.borderRadius = "12px";
+  out.style.marginTop = "20px";
+  out.style.lineHeight = "1.6";
+}
+</script>
+</body>
+  </html>
